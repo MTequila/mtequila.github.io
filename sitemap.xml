@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://yoursite.com/2017/02/18/spring-boot-security-cas-sso/</loc>
+    
+    <lastmod>2017-02-18T04:39:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/404.html</loc>
+    
+    <lastmod>2017-02-15T12:04:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/index.html</loc>
+    
+    <lastmod>2017-02-15T12:04:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/login/index.html</loc>
+    
+    <lastmod>2017-02-15T12:04:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2017-02-15T12:04:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/contact/index.html</loc>
+    
+    <lastmod>2017-02-15T12:04:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/projects/index.html</loc>
+    
+    <lastmod>2017-02-15T12:04:40.000Z</lastmod>
+    
+  </url>
+  
+</urlset>

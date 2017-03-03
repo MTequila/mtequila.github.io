@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>马扣李</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-02-18T04:39:45.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Marco Lee</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基本Spring Boot 的 Spring Security CAS SSO 配置</title>
+    <link href="http://yoursite.com/2017/02/18/spring-boot-security-cas-sso/"/>
+    <id>http://yoursite.com/2017/02/18/spring-boot-security-cas-sso/</id>
+    <published>2017-02-18T04:21:42.000Z</published>
+    <updated>2017-02-18T04:39:45.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Spring Boot" scheme="http://yoursite.com/categories/Spring-Boot/"/>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+      <category term="Spring Boot" scheme="http://yoursite.com/tags/Spring-Boot/"/>
+    
+      <category term="Spring Security" scheme="http://yoursite.com/tags/Spring-Security/"/>
+    
+      <category term="CAS" scheme="http://yoursite.com/tags/CAS/"/>
+    
+      <category term="SSO" scheme="http://yoursite.com/tags/SSO/"/>
+    
+  </entry>
+  
+</feed>
