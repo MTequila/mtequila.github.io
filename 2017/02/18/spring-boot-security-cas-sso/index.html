@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang=zh>
 <head>
     <meta charset="utf-8">
     
@@ -10,12 +10,12 @@
 今天主要主要聊一下单点登陆系统的整合，单点登陆这种比较成熟的技术，有很多开源产品可以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基本Spring Boot 的 Spring Security CAS SSO 配置">
-<meta property="og:url" content="http://www.marcoder.com/2017/02/18/spring-boot-security-cas-sso/index.html">
+<meta property="og:url" content="localhost:4000/2017/02/18/spring-boot-security-cas-sso/index.html">
 <meta property="og:site_name" content="燃情岁月">
 <meta property="og:description" content="【原创文章，转载请注明出处】
 最近在整理公司的几个内部系统的认证和授权，这些子系统是用php开发的，单点登陆和权限管理都做了，但是架构和设计上有一些局限，导致本博用Java开发的新的子系统无法接入。随着公司技术方向往Java微服务架构转移，之前老的那一套php搞的认证与授权也决定推倒从来，用Java的这一套来搞。
 今天主要主要聊一下单点登陆系统的整合，单点登陆这种比较成熟的技术，有很多开源产品可以">
-<meta property="og:updated_time" content="2017-03-04T17:17:57.000Z">
+<meta property="og:updated_time" content="2017-03-07T03:38:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基本Spring Boot 的 Spring Security CAS SSO 配置">
 <meta name="twitter:description" content="【原创文章，转载请注明出处】
@@ -91,14 +91,14 @@ ga('send', 'pageview');
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -110,11 +110,11 @@ ga('send', 'pageview');
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -140,7 +140,7 @@ ga('send', 'pageview');
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
     </div>
 
                 </td>
@@ -160,16 +160,16 @@ ga('send', 'pageview');
             <h2 id="name">Marco</h2>
             <h3 id="title">Web Developer &amp; Designer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Shanghai, China</span>
-            <a id="follow" target="_blank" href="https://github.com/MTequila">FOLLOW</a>
+            <a id="follow" target="_blank" href="https://github.com/MTequila">关注我</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
                 1
-                <span>post</span>
+                <span>文章</span>
             </div>
             <div class="article-info-block">
                 5
-                <span>tags</span>
+                <span>标签</span>
             </div>
         </div>
         
@@ -260,6 +260,7 @@ ga('send', 'pageview');
 <li>开源产品在需求上考虑的比你要周全</li>
 <li>公司自己不需要去维护一套代码，可以减少成本</li>
 </ul>
+<a id="more"></a>
 <p>单点登录开源产品网上有很多，综合评估下来肯定使用<code>CAS</code>，因为他历史悠久、功能强大、坚持迭代更新中。本文不详情介绍如何搭建<code>CAS</code>单点登录服务了，因为网上已经有很多相关的博文了，本博在搭建<code>CAS</code>时大多参照了<code>Endzz</code>的<a href="http://www.jianshu.com/p/daca18a8f84c" target="_blank" rel="external">这篇博文</a>。</p>
 <p>现在是<code>Spring Boot</code>的时代，本博在工作中开发的Web应该也都是基于<code>Spring Boot</code>构建的，因为她实在是太快捷太方便了！Web的授权访问控制使用<code>Spring Security</code>Spring家族的一员猛将，本篇博文主要聊一下如何基于<code>Spring Boot</code>把<code>Spring Security</code>与<code>CAS</code>单点登录整合起来，接下来进入正题。</p>
 <p>首先给项目添加<code>Spring Security</code>依赖配置(本博使用<code>Gradle</code>构建):<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">	<span class="keyword">compile</span>(<span class="string">'org.springframework.boot:spring-boot-starter-web'</span>)</div><div class="line">	<span class="keyword">compile</span>(<span class="string">'org.springframework.boot:spring-boot-starter-security'</span>)</div><div class="line">	<span class="keyword">compile</span>(<span class="string">'org.springframework.security:spring-security-cas'</span>)</div><div class="line">	testCompile(<span class="string">'org.springframework.boot:spring-boot-starter-test'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -281,7 +282,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://www.marcoder.com/2017/02/18/spring-boot-security-cas-sso/" data-id="cizyxrotc0002rdubml3kdwme" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="localhost:4000/2017/02/18/spring-boot-security-cas-sso/" data-id="cizyzo2cz00021tubtoehub9s" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -349,7 +350,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="http://www.marcoder.com/2017/02/18/spring-boot-security-cas-sso/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://www.marcoder.com/2017/02/18/spring-boot-security-cas-sso/">Comments</a>
+        <a href="localhost:4000/2017/02/18/spring-boot-security-cas-sso/#comments" class="article-comment-link ds-thread-count" data-thread-key="localhost:4000/2017/02/18/spring-boot-security-cas-sso/">评论</a>
     
 
         </footer>
@@ -362,10 +363,7 @@ ga('send', 'pageview');
 
 
     
-    <section id="comments">
-    
-        
-    <div class="ds-thread" data-thread-key="2017/02/18/spring-boot-security-cas-sso/" data-title="基本Spring Boot 的 Spring Security CAS SSO 配置" data-url="http://www.marcoder.com/2017/02/18/spring-boot-security-cas-sso/"></div>
+    <div class="ds-thread" data-thread-key="2017/02/18/spring-boot-security-cas-sso/" data-title="基本Spring Boot 的 Spring Security CAS SSO 配置" data-url="localhost:4000/2017/02/18/spring-boot-security-cas-sso/"></div>
     <style>
         #ds-thread #ds-reset .ds-textarea-wrapper {
             background: none;
@@ -404,16 +402,13 @@ ga('send', 'pageview');
         }
     </style>
 
-    
-    </section>
-
 </section>
             
                 <aside id="sidebar">
    
         
     <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
+        <h3 class="widget-title">分类</h3>
         <div class="widget">
             <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring-Boot/">Spring Boot</a><span class="category-list-count">1</span></li></ul>
         </div>
@@ -422,16 +417,16 @@ ga('send', 'pageview');
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
+        <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
+        <h3 class="widget-title">标签</h3>
         <div class="widget">
             <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CAS/">CAS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSO/">SSO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Security/">Spring Security</a><span class="tag-list-count">1</span></li></ul>
         </div>
@@ -440,7 +435,7 @@ ga('send', 'pageview');
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
+        <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
             <a href="/tags/CAS/" style="font-size: 10px;">CAS</a> <a href="/tags/SSO/" style="font-size: 10px;">SSO</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Spring-Boot/" style="font-size: 10px;">Spring Boot</a> <a href="/tags/Spring-Security/" style="font-size: 10px;">Spring Security</a>
         </div>
@@ -462,7 +457,7 @@ ga('send', 'pageview');
         
     
     <script type="text/javascript">
-    var duoshuoQuery = {short_name:'燃情岁月'};
+    var duoshuoQuery = {short_name:'marcoder'};
     (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

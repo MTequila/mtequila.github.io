@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.marcoder.com/"/>
-  <updated>2017-03-04T17:17:57.000Z</updated>
-  <id>http://www.marcoder.com/</id>
+  <link href="localhost:4000/"/>
+  <updated>2017-03-07T03:38:19.000Z</updated>
+  <id>localhost:4000/</id>
   
   <author>
     <name>Marco Lee</name>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>基本Spring Boot 的 Spring Security CAS SSO 配置</title>
-    <link href="http://www.marcoder.com/2017/02/18/spring-boot-security-cas-sso/"/>
-    <id>http://www.marcoder.com/2017/02/18/spring-boot-security-cas-sso/</id>
+    <link href="localhost:4000/2017/02/18/spring-boot-security-cas-sso/"/>
+    <id>localhost:4000/2017/02/18/spring-boot-security-cas-sso/</id>
     <published>2017-02-18T04:21:42.000Z</published>
-    <updated>2017-03-04T17:17:57.000Z</updated>
+    <updated>2017-03-07T03:38:19.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>【原创文章，转载请注明出处】</strong></p>
 <p>最近在整理公司的几个内部系统的认证和授权，这些子系统是用php开发的，单点登陆和权限管理都做了，但是架构和设计上有一些局限，导致本博用Java开发的新的子系统无法接入。随着公司技术方向往Java微服务架构转移，之前老的那一套php搞的认证与授权也决定推倒从来，用Java的这一套来搞。</p>
@@ -29,6 +29,7 @@
 <li>开源产品在需求上考虑的比你要周全</li>
 <li>公司自己不需要去维护一套代码，可以减少成本</li>
 </ul>
+<a id="more"></a>
 <p>单点登录开源产品网上有很多，综合评估下来肯定使用<code>CAS</code>，因为他历史悠久、功能强大、坚持迭代更新中。本文不详情介绍如何搭建<code>CAS</code>单点登录服务了，因为网上已经有很多相关的博文了，本博在搭建<code>CAS</code>时大多参照了<code>Endzz</code>的<a href="http://www.jianshu.com/p/daca18a8f84c" target="_blank" rel="external">这篇博文</a>。</p>
 <p>现在是<code>Spring Boot</code>的时代，本博在工作中开发的Web应该也都是基于<code>Spring Boot</code>构建的，因为她实在是太快捷太方便了！Web的授权访问控制使用<code>Spring Security</code>Spring家族的一员猛将，本篇博文主要聊一下如何基于<code>Spring Boot</code>把<code>Spring Security</code>与<code>CAS</code>单点登录整合起来，接下来进入正题。</p>
 <p>首先给项目添加<code>Spring Security</code>依赖配置(本博使用<code>Gradle</code>构建):<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">	<span class="keyword">compile</span>(<span class="string">'org.springframework.boot:spring-boot-starter-web'</span>)</div><div class="line">	<span class="keyword">compile</span>(<span class="string">'org.springframework.boot:spring-boot-starter-security'</span>)</div><div class="line">	<span class="keyword">compile</span>(<span class="string">'org.springframework.security:spring-security-cas'</span>)</div><div class="line">	testCompile(<span class="string">'org.springframework.boot:spring-boot-starter-test'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -45,22 +46,27 @@
     <summary type="html">
     
       &lt;p&gt;&lt;strong&gt;【原创文章，转载请注明出处】&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;最近在整理公司的几个内部系统的认证和授权，这些子系统是用php开发的，单点登陆和权限管理都做了，但是架构和设计上有一些局限，导致本博用Java开发的新的子系统无法接入。随着公司技术方向往Java微
+&lt;p&gt;最近在整理公司的几个内部系统的认证和授权，这些子系统是用php开发的，单点登陆和权限管理都做了，但是架构和设计上有一些局限，导致本博用Java开发的新的子系统无法接入。随着公司技术方向往Java微服务架构转移，之前老的那一套php搞的认证与授权也决定推倒从来，用Java的这一套来搞。&lt;/p&gt;
+&lt;p&gt;今天主要主要聊一下单点登陆系统的整合，单点登陆这种比较成熟的技术，有很多开源产品可以使用。而本博的原则也是能用开源产品就尽量不要自己重头写，原因很简单：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开源产品在需求上考虑的比你要周全&lt;/li&gt;
+&lt;li&gt;公司自己不需要去维护一套代码，可以减少成本&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
-      <category term="Spring Boot" scheme="http://www.marcoder.com/categories/Spring-Boot/"/>
+      <category term="Spring Boot" scheme="localhost:4000/categories/Spring-Boot/"/>
     
     
-      <category term="Spring" scheme="http://www.marcoder.com/tags/Spring/"/>
+      <category term="Spring" scheme="localhost:4000/tags/Spring/"/>
     
-      <category term="Spring Boot" scheme="http://www.marcoder.com/tags/Spring-Boot/"/>
+      <category term="Spring Boot" scheme="localhost:4000/tags/Spring-Boot/"/>
     
-      <category term="Spring Security" scheme="http://www.marcoder.com/tags/Spring-Security/"/>
+      <category term="Spring Security" scheme="localhost:4000/tags/Spring-Security/"/>
     
-      <category term="CAS" scheme="http://www.marcoder.com/tags/CAS/"/>
+      <category term="CAS" scheme="localhost:4000/tags/CAS/"/>
     
-      <category term="SSO" scheme="http://www.marcoder.com/tags/SSO/"/>
+      <category term="SSO" scheme="localhost:4000/tags/SSO/"/>
     
   </entry>
   
