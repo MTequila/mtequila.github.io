@@ -3,14 +3,30 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档: 2017/2 | 燃情岁月</title>
+    <title>Spring Security CAS Logout 重定向 | 燃情岁月</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="燃情岁月">
-<meta property="og:url" content="/archives/2017/02/index.html">
+    <meta name="description" content="【原创文章，转载请注明出处】
+
+承接上文《基本Spring Boot 的 Spring Security CAS SSO 配置》；在使用CAS时，用户退出系统后，Web界面一直停留在CAS的退出成功界面上，没有继续转向，添加了转向参数也没有起到作用，网上找了一些资料后得到解决，这里记录分享一下。
+
+首先修改CAS配置文件：cas-server-webapp项目下的webapp/WEB-INFO/c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Security CAS Logout 重定向">
+<meta property="og:url" content="/2017/03/08/spring-security-cas-logout-redirect/index.html">
 <meta property="og:site_name" content="燃情岁月">
+<meta property="og:description" content="【原创文章，转载请注明出处】
+
+承接上文《基本Spring Boot 的 Spring Security CAS SSO 配置》；在使用CAS时，用户退出系统后，Web界面一直停留在CAS的退出成功界面上，没有继续转向，添加了转向参数也没有起到作用，网上找了一些资料后得到解决，这里记录分享一下。
+
+首先修改CAS配置文件：cas-server-webapp项目下的webapp/WEB-INFO/c">
+<meta property="og:updated_time" content="2017-03-08T16:14:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="燃情岁月">
+<meta name="twitter:title" content="Spring Security CAS Logout 重定向">
+<meta name="twitter:description" content="【原创文章，转载请注明出处】
+
+承接上文《基本Spring Boot 的 Spring Security CAS SSO 配置》；在使用CAS时，用户退出系统后，Web界面一直停留在CAS的退出成功界面上，没有继续转向，添加了转向参数也没有起到作用，网上找了一些资料后得到解决，这里记录分享一下。
+
+首先修改CAS配置文件：cas-server-webapp项目下的webapp/WEB-INFO/c">
     
 
     
@@ -200,50 +216,196 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2017</h1>
-            </div>
+            <section id="main"><article id="post-spring-security-cas-logout-redirect" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/02/18/spring-boot-security-cas-sso/">基本Spring Boot 的 Spring Security CAS SSO 配置</a>
+        <h1 class="article-title" itemprop="name">
+            Spring Security CAS Logout 重定向
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/02/18/spring-boot-security-cas-sso/">
-            <time datetime="2017-02-18T04:21:42.000Z" itemprop="datePublished">2017-02-18</time>
+        <a href="/2017/03/08/spring-security-cas-logout-redirect/">
+            <time datetime="2017-03-08T15:26:27.000Z" itemprop="datePublished">2017-03-08</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/Spring-Boot/">Spring Boot</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/CAS/">CAS</a>, <a class="tag-link" href="/tags/SSO/">SSO</a>, <a class="tag-link" href="/tags/Spring/">Spring</a>, <a class="tag-link" href="/tags/Spring-Boot/">Spring Boot</a>, <a class="tag-link" href="/tags/Spring-Security/">Spring Security</a>
+        <a class="tag-link" href="/tags/CAS/">CAS</a>, <a class="tag-link" href="/tags/Redirect/">Redirect</a>, <a class="tag-link" href="/tags/Spring/">Spring</a>, <a class="tag-link" href="/tags/Spring-Boot/">Spring Boot</a>, <a class="tag-link" href="/tags/Spring-Security/">Spring Security</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><strong>【原创文章，转载请注明出处】</strong></p>
+<blockquote>
+<p>承接上文<a href="/2017/02/18/spring-boot-security-cas-sso/">《基本Spring Boot 的 Spring Security CAS SSO 配置》</a>；在使用<code>CAS</code>时，用户退出系统后，Web界面一直停留在<code>CAS</code>的退出成功界面上，没有继续转向，添加了转向参数也没有起到作用，网上找了一些资料后得到解决，这里记录分享一下。</p>
+</blockquote>
+<p>首先修改<code>CAS</code>配置文件：<code>cas-server-webapp</code>项目下的<code>webapp/WEB-INFO/cas-servlet.xml</code>，把<code>cas.logout.followServiceRedirects</code>参数设置为<code>true</code>：<a id="more"></a><br><figure class="highlight xml"><figcaption><span>cas-servlet.xml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"logoutAction"</span> <span class="attr">class</span>=<span class="string">"org.jasig.cas.web.flow.LogoutAction"</span></span></div><div class="line">   <span class="attr">p:servicesManager-ref</span>=<span class="string">"servicesManager"</span></div><div class="line">   <span class="attr">p:followServiceRedirects</span>=<span class="string">"$&#123;cas.logout.followServiceRedirects:true&#125;"</span>/&gt;</div></pre></td></tr></table></figure></p>
+<p>然后修改<code>Spring Security</code>配置文件中的logout链接，添加转向地址，这样在用户退出系统后，<code>CAS</code>即可转向到参数<code>service</code>所传递的链接地址中去。</p>
+<p>代码如下：<br><figure class="highlight java"><figcaption><span>WebSecurityConfig.java</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> LogoutFilter <span class="title">logoutFilter</span><span class="params">()</span> </span>&#123;</div><div class="line">   LogoutFilter filter = <span class="keyword">new</span> LogoutFilter(SSO_URL + <span class="string">"logout?service=http://localhost:8080/"</span>, <span class="keyword">new</span> SecurityContextLogoutHandler());</div><div class="line">   <span class="keyword">return</span> filter;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="/2017/03/08/spring-security-cas-logout-redirect/" data-id="cj014e3v80004ugubppcuiora" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="/2017/03/08/spring-security-cas-logout-redirect/#comments" class="article-comment-link ds-thread-count" data-thread-key="/2017/03/08/spring-security-cas-logout-redirect/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/02/18/spring-boot-security-cas-sso/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">基本Spring Boot 的 Spring Security CAS SSO 配置</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <div class="ds-thread" data-thread-key="2017/03/08/spring-security-cas-logout-redirect/" data-title="Spring Security CAS Logout 重定向" data-url="/2017/03/08/spring-security-cas-logout-redirect/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
 </section>
             
                 <aside id="sidebar">

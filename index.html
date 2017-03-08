@@ -154,11 +154,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                1
+                2
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                5
+                6
                 <span>标签</span>
             </div>
         </div>
@@ -201,6 +201,143 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-spring-security-cas-logout-redirect" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/03/08/spring-security-cas-logout-redirect/">Spring Security CAS Logout 重定向</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/03/08/spring-security-cas-logout-redirect/">
+            <time datetime="2017-03-08T15:26:27.000Z" itemprop="datePublished">2017-03-08</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Spring-Boot/">Spring Boot</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/CAS/">CAS</a>, <a class="tag-link" href="/tags/Redirect/">Redirect</a>, <a class="tag-link" href="/tags/Spring/">Spring</a>, <a class="tag-link" href="/tags/Spring-Boot/">Spring Boot</a>, <a class="tag-link" href="/tags/Spring-Security/">Spring Security</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><strong>【原创文章，转载请注明出处】</strong></p>
+<blockquote>
+<p>承接上文<a href="/2017/02/18/spring-boot-security-cas-sso/">《基本Spring Boot 的 Spring Security CAS SSO 配置》</a>；在使用<code>CAS</code>时，用户退出系统后，Web界面一直停留在<code>CAS</code>的退出成功界面上，没有继续转向，添加了转向参数也没有起到作用，网上找了一些资料后得到解决，这里记录分享一下。</p>
+</blockquote>
+<p>首先修改<code>CAS</code>配置文件：<code>cas-server-webapp</code>项目下的<code>webapp/WEB-INFO/cas-servlet.xml</code>，把<code>cas.logout.followServiceRedirects</code>参数设置为<code>true</code>：</p>
+            <p class="article-more-link">
+                <a href="/2017/03/08/spring-security-cas-logout-redirect/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="/2017/03/08/spring-security-cas-logout-redirect/" data-id="cj014e3v80004ugubppcuiora" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="/2017/03/08/spring-security-cas-logout-redirect/#comments" class="article-comment-link ds-thread-count" data-thread-key="/2017/03/08/spring-security-cas-logout-redirect/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-spring-boot-security-cas-sso" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -244,7 +381,9 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             <p><p><strong>【原创文章，转载请注明出处】</strong></p>
+<blockquote>
 <p>最近在整理公司的几个内部系统的认证和授权，这些子系统是用php开发的，单点登陆和权限管理都做了，但是架构和设计上有一些局限，导致本博用Java开发的新的子系统无法接入。随着公司技术方向往Java微服务架构转移，之前老的那一套php搞的认证与授权也决定推倒从来，用Java的这一套来搞。</p>
+</blockquote>
 <p>今天主要主要聊一下单点登陆系统的整合，单点登陆这种比较成熟的技术，有很多开源产品可以使用。而本博的原则也是能用开源产品就尽量不要自己重头写，原因很简单：</p>
 <ul>
 <li>开源产品在需求上考虑的比你要周全</li>
@@ -262,7 +401,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="/2017/02/18/spring-boot-security-cas-sso/" data-id="cj00lqm740003oyuba3euw63p" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="/2017/02/18/spring-boot-security-cas-sso/" data-id="cj014e3v30002ugubeudjdgn6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -347,7 +486,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring-Boot/">Spring Boot</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring-Boot/">Spring Boot</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -356,7 +495,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -365,7 +504,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CAS/">CAS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSO/">SSO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Security/">Spring Security</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CAS/">CAS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redirect/">Redirect</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSO/">SSO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Security/">Spring Security</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -374,7 +513,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/CAS/" style="font-size: 10px;">CAS</a> <a href="/tags/SSO/" style="font-size: 10px;">SSO</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Spring-Boot/" style="font-size: 10px;">Spring Boot</a> <a href="/tags/Spring-Security/" style="font-size: 10px;">Spring Security</a>
+            <a href="/tags/CAS/" style="font-size: 20px;">CAS</a> <a href="/tags/Redirect/" style="font-size: 10px;">Redirect</a> <a href="/tags/SSO/" style="font-size: 10px;">SSO</a> <a href="/tags/Spring/" style="font-size: 20px;">Spring</a> <a href="/tags/Spring-Boot/" style="font-size: 20px;">Spring Boot</a> <a href="/tags/Spring-Security/" style="font-size: 20px;">Spring Security</a>
         </div>
     </div>
 
