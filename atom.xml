@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.marcoder.com/"/>
+  <link href="/"/>
   <updated>2017-03-07T03:38:19.000Z</updated>
-  <id>http://www.marcoder.com/</id>
+  <id>/</id>
   
   <author>
     <name>Marco Lee</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>基本Spring Boot 的 Spring Security CAS SSO 配置</title>
-    <link href="http://www.marcoder.com/2017/02/18/spring-boot-security-cas-sso/"/>
-    <id>http://www.marcoder.com/2017/02/18/spring-boot-security-cas-sso/</id>
+    <link href="/2017/02/18/spring-boot-security-cas-sso/"/>
+    <id>/2017/02/18/spring-boot-security-cas-sso/</id>
     <published>2017-02-18T04:21:42.000Z</published>
     <updated>2017-03-07T03:38:19.000Z</updated>
     
@@ -55,18 +55,18 @@
     
     </summary>
     
-      <category term="Spring Boot" scheme="http://www.marcoder.com/categories/Spring-Boot/"/>
+      <category term="Spring Boot" scheme="/categories/Spring-Boot/"/>
     
     
-      <category term="Spring" scheme="http://www.marcoder.com/tags/Spring/"/>
+      <category term="Spring" scheme="/tags/Spring/"/>
     
-      <category term="Spring Boot" scheme="http://www.marcoder.com/tags/Spring-Boot/"/>
+      <category term="Spring Boot" scheme="/tags/Spring-Boot/"/>
     
-      <category term="Spring Security" scheme="http://www.marcoder.com/tags/Spring-Security/"/>
+      <category term="Spring Security" scheme="/tags/Spring-Security/"/>
     
-      <category term="CAS" scheme="http://www.marcoder.com/tags/CAS/"/>
+      <category term="CAS" scheme="/tags/CAS/"/>
     
-      <category term="SSO" scheme="http://www.marcoder.com/tags/SSO/"/>
+      <category term="SSO" scheme="/tags/SSO/"/>
     
   </entry>
   
