@@ -246,7 +246,8 @@ ga('send', 'pageview');
 </div>
 </section>
             
-                <aside id="sidebar">
+                
+<aside id="sidebar">
    
         
     <div class="widget-wrap">
@@ -286,6 +287,7 @@ ga('send', 'pageview');
     
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
+
             
         </div>
         <footer id="footer">
@@ -298,17 +300,20 @@ ga('send', 'pageview');
 </footer>
         
     
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:'marcoder'};
-    (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    </script>
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'MTequila',
+			repo: 'mtequila.github.io',
+			oauth: {
+				client_id: '8b3938fe67d1e3588489',
+				client_secret: '7d27ade2ff1d6fb11e2f90c4425dc169c081eff4',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 
@@ -325,6 +330,7 @@ ga('send', 'pageview');
     
     
         <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
     
 
 
