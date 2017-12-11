@@ -132,7 +132,7 @@ code {
   margin: 0 2px;
   color: #e96900;
   padding: 3px 5px;
-  font-size: 0.8em;
+  font-size: 0.9em;
   border-radius: 2px;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
   background-color: #f8f8f8;
@@ -925,8 +925,12 @@ a.article-title:hover {
 .article-entry video {
   max-width: 100%;
   height: auto;
-  display: block;
   margin: auto;
+  vertical-align: text-bottom;
+}
+.article-entry video,
+.article-entry a img {
+  display: block;
 }
 .article-entry iframe {
   border: none;

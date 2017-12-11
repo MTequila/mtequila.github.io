@@ -3,14 +3,30 @@
 <head>
     <meta charset="utf-8">
     
-    <title>燃情岁月</title>
+    <title>使用RSA非对称加密JWT | 燃情岁月</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="燃情岁月">
-<meta property="og:url" content="/index.html">
+    <meta name="description" content="【原创文章，转载请注明出处】
+
+JWT几乎是当前分布式开发中无状态token的最佳选择，被越来越多的开发者接受和使用，JWT是基于加密算法的认证方式，省去了到认证服务器的校验过程，认证效率大大提高。更详细的关于JWT的介绍可以点击这里查看。
+
+通常大家在使用JWT的时候都是使用HmacSHA256加密钥的加密方式，这种方式严格依赖密钥，在分布式开发的过程中，通常是由认证服务器生成JWT，然后再由资">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用RSA非对称加密JWT">
+<meta property="og:url" content="/2017/12/11/jwt-rsa/index.html">
 <meta property="og:site_name" content="燃情岁月">
+<meta property="og:description" content="【原创文章，转载请注明出处】
+
+JWT几乎是当前分布式开发中无状态token的最佳选择，被越来越多的开发者接受和使用，JWT是基于加密算法的认证方式，省去了到认证服务器的校验过程，认证效率大大提高。更详细的关于JWT的介绍可以点击这里查看。
+
+通常大家在使用JWT的时候都是使用HmacSHA256加密钥的加密方式，这种方式严格依赖密钥，在分布式开发的过程中，通常是由认证服务器生成JWT，然后再由资">
+<meta property="og:updated_time" content="2017-12-11T16:25:09.574Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="燃情岁月">
+<meta name="twitter:title" content="使用RSA非对称加密JWT">
+<meta name="twitter:description" content="【原创文章，转载请注明出处】
+
+JWT几乎是当前分布式开发中无状态token的最佳选择，被越来越多的开发者接受和使用，JWT是基于加密算法的认证方式，省去了到认证服务器的校验过程，认证效率大大提高。更详细的关于JWT的介绍可以点击这里查看。
+
+通常大家在使用JWT的时候都是使用HmacSHA256加密钥的加密方式，这种方式严格依赖密钥，在分布式开发的过程中，通常是由认证服务器生成JWT，然后再由资">
     
 
     
@@ -200,16 +216,15 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-    <article id="post-jwt-rsa" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-jwt-rsa" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
             <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/12/11/jwt-rsa/">使用RSA非对称加密JWT</a>
+        <h1 class="article-title" itemprop="name">
+            使用RSA非对称加密JWT
         </h1>
     
 
@@ -243,15 +258,35 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p><strong>【原创文章，转载请注明出处】</strong></p>
+            
+            <p><strong>【原创文章，转载请注明出处】</strong></p>
 <blockquote>
-<p><a href="https://jwt.io">JWT</a>几乎是当前分布式开发中无状态token的最佳选择，被越来越多的开发者接受和使用，<code>JWT</code>是基于加密算法的认证方式，省去了到认证服务器的校验过程，认证效率大大提高。更详细的关于JWT的介绍可以点击<a href="http://www.jianshu.com/p/576dbf44b2ae">这里</a>查看。</p>
+<p><a href="https://jwt.io" target="_blank" rel="external">JWT</a>几乎是当前分布式开发中无状态token的最佳选择，被越来越多的开发者接受和使用，<code>JWT</code>是基于加密算法的认证方式，省去了到认证服务器的校验过程，认证效率大大提高。更详细的关于JWT的介绍可以点击<a href="http://www.jianshu.com/p/576dbf44b2ae" target="_blank" rel="external">这里</a>查看。</p>
 </blockquote>
 <p>通常大家在使用JWT的时候都是使用<code>HmacSHA256</code>加密钥的加密方式，这种方式严格依赖密钥，在分布式开发的过程中，通常是由认证服务器生成<code>JWT</code>，然后再由资源校验<code>JWT</code>的有效性，那么这时候资源服务器就也需要密钥了，认证服务和资源服务很可能是不同的团队开发和维护，密钥在这个过程中传递，很有可能泄漏。密钥一旦泄漏，对方就可以轻易的模拟一个<code>JWT</code>token出来，获取相关信息。</p>
-<p><a href="https://zh.wikipedia.org/wiki/RSA加密演算法">RSA</a>非对称加密算法就可以很好的解决这个问题，认证服务器使用私钥生成<code>JWT</code>，资源服务器使用公钥去校验<code>JWT</code>，认证服务去管理私钥，公钥开放给各个资源服务，这样密钥泄漏的可能性就大大降低了。</p></p>
-            <p class="article-more-link">
-                <a href="/2017/12/11/jwt-rsa/#more">查看更多</a>
-            </p>
+<p><a href="https://zh.wikipedia.org/wiki/RSA加密演算法" target="_blank" rel="external">RSA</a>非对称加密算法就可以很好的解决这个问题，认证服务器使用私钥生成<code>JWT</code>，资源服务器使用公钥去校验<code>JWT</code>，认证服务去管理私钥，公钥开放给各个资源服务，这样密钥泄漏的可能性就大大降低了。</p>
+<a id="more"></a>
+<h2 id="首先生成公钥和密钥"><a href="#首先生成公钥和密钥" class="headerlink" title="首先生成公钥和密钥"></a>首先生成公钥和密钥</h2><ol>
+<li><p>打开终端<code>Terminal</code>或者<code>iTerm</code>输入以下命令生成私钥:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl genrsa -out rsa_private_key.pem 1024</div></pre></td></tr></table></figure>
+</li>
+<li><p>把RSA私钥转换成PKCS8格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl pkcs8 -topk8 -inform PEM -in rsa_private_key.pem -outform PEM -nocrypt</div></pre></td></tr></table></figure>
+<p>注意把控制台输出的私钥内容替换到私钥文件(<code>rsa_private_key.pem</code>)中去。</p>
+</li>
+<li><p>生成公钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl rsa -in rsa_private_key.pem -out rsa_public_key.pem -pubout</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>我这里生成了一份公钥和私钥，用于测试:<br>私钥<code>rsa_private_key.pem</code>:<br><figure class="highlight plain"><figcaption><span>rsa_private_key.pem</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-----BEGIN PRIVATE KEY-----</div><div class="line">MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBANDrROfXcbDeMB40</div><div class="line">Aa+X/JkRquSj2hXfeMAbkiArzobMEkqwDbdG76/YtSRx6Nem79yqwhUNqNg+lKfM</div><div class="line">RMprERDm/+/eX1Tv3YDFzpXZay0md5hZxUQKNqWDobCd7U8twKRDfIw1BfIBtPid</div><div class="line">L3RKmOXlJudoa+KeThIRQlT2DHrFAgMBAAECgYBs1OKEU7sqA9TVJwppyqcPpiB8</div><div class="line">Es8c7dkdWj94+tkPZ2dv+N5sR0u9MwrJ/XzqOlBhh6KrDP6UB6Ww87wyJiwwy+11</div><div class="line">R6Oz2XxPSGBFimoZPyc+dgPC/z63PPpHStXN9027IcaS47sjvtUp6HoCjLZZNht/</div><div class="line">oSGxSLZjLDXPm3JLgQJBAP2MAgP387fF8wa5WHqafaNGKW5KI9srwY7szCbleO0Q</div><div class="line">EL5eLmYVGUns5sjRFJSjl242QWvkmNlp52TgIkfj+M0CQQDS8LnGa5zeWSzUiDkP</div><div class="line">oiMhaJSVQtlgApfsTAA7Lx+M0TENjJcFGFKhGWDSY8AIE1DzYWIijRbC0vsc+WZZ</div><div class="line">zOnZAkEA1dt3/7zudv2iJPPEq3UPr94IKByk7cKUemdFMzGus9YvKULrQ/Nb5zzI</div><div class="line">1G12PIFXwwBEYirouclYAYADqjuhqQJAHfgDfNRHKjPjMaLU8IqpkRKJoZcoyQI1</div><div class="line">UWYO1lnAksIZxQIHZrro6mhvoBR58OvFoX5hceU3qaBN+vTX/MQnKQJBAKX95ga2</div><div class="line">NNWQ5Y1TfMEN3X0Ki+y9H64HODxaIuHW/h0W7kVssHSdNPvlEzR+S5pBaVy/6nDH</div><div class="line">CUXtz5Uuq3Wm3CA=</div><div class="line">-----END PRIVATE KEY----</div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>公钥<code>rsa_public_key.pem</code>:<br><figure class="highlight plain"><figcaption><span>rsa_public_key.pem</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-----BEGIN PUBLIC KEY-----</div><div class="line">MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ60Tn13Gw3jAeNAGvl/yZEark</div><div class="line">o9oV33jAG5IgK86GzBJKsA23Ru+v2LUkcejXpu/cqsIVDajYPpSnzETKaxEQ5v/v</div><div class="line">3l9U792Axc6V2WstJneYWcVECjalg6Gwne1PLcCkQ3yMNQXyAbT4nS90Spjl5Sbn</div><div class="line">aGvink4SEUJU9gx6xQIDAQAB</div><div class="line">-----END PUBLIC KEY-----</div><div class="line"></div></pre></td></tr></table></figure></p>
+<h2 id="然后开始生成JWT"><a href="#然后开始生成JWT" class="headerlink" title="然后开始生成JWT"></a>然后开始生成JWT</h2><p>Java开发中一般使用<a href="http://mvnrepository.com/artifact/io.jsonwebtoken/jjwt" target="_blank" rel="external">jjwt</a>这个库来操作<code>JWT</code>,在<code>build.gradle</code>用添加如下依赖即可:<br><figure class="highlight groovy"><figcaption><span>build.gradle</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">	compile <span class="string">group:</span> <span class="string">'io.jsonwebtoken'</span>, <span class="string">name:</span> <span class="string">'jjwt'</span>, <span class="string">version:</span> <span class="string">'0.9.0'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h3><p>生成<code>JWT</code>的时候需要把签名算法改在<code>RS256</code>，这一点很重要，这里就表明要求<code>JWT</code>使用<code>RSA</code>算法进行加密:<br><figure class="highlight java"><figcaption><span>JwtUtils.java</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">buildJwtRS256</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.RS256;</div><div class="line">    </div><div class="line"><span class="comment">// 读取私钥</span></div><div class="line">String key = readResourceKey(<span class="string">"rsa_private_key.pem"</span>);</div><div class="line">    </div><div class="line"><span class="comment">// 生成签名密钥</span></div><div class="line"><span class="keyword">byte</span>[] keyBytes = (<span class="keyword">new</span> BASE64Decoder()).decodeBuffer(key);</div><div class="line">PKCS8EncodedKeySpec keySpec = <span class="keyword">new</span> PKCS8EncodedKeySpec(keyBytes);</div><div class="line">KeyFactory keyFactory = KeyFactory.getInstance(<span class="string">"RSA"</span>);</div><div class="line">PrivateKey privateKey = keyFactory.generatePrivate(keySpec);</div><div class="line">JwtBuilder builder = Jwts.builder().setHeaderParam(<span class="string">"typ"</span>, <span class="string">"JWT"</span>)</div><div class="line">       .setIssuer(<span class="string">"marco"</span>)</div><div class="line">       .setSubject(<span class="string">"token"</span>)</div><div class="line">       .signWith(signatureAlgorithm, privateKey);</div><div class="line"></div><div class="line"><span class="comment">// jwt中需要传递的内容</span></div><div class="line">builder.claim(<span class="string">"id"</span>, <span class="number">10001</span>);</div><div class="line"><span class="keyword">return</span> builder.compact();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>生成的<code>JWT</code>字符串如下:</p>
+<pre><code>eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJtYXJjbyIsInN1YiI6InRva2VuIiwiaWQiOjEwMDAxfQ.KmPbzze6zGq5dXDt_XBmwGDsRljHC1dDda5vDroBaJCMdojKczyCUuBYQ203WY7WvgofFnmDw8t2APncDthdEbOxZ2lLXZeiadY6DnSVzOierTzehXGLq7jjONif5I_1vnyrkL5D6EQ2c7RrQNQZmkYGu_pSTkifC9bHJrlKMTs
+</code></pre><h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>使用<code>RSA</code>公钥解析<code>JWT</code>代码如下:<br><figure class="highlight java"><figcaption><span>JwtUtils.java</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Claims <span class="title">parseJwtRS256</span><span class="params">(String jwt)</span> </span>&#123;</div><div class="line">Claims claims = <span class="keyword">null</span>;</div><div class="line"></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">   <span class="comment">// 读取公钥</span></div><div class="line">   String key = readResourceKey(<span class="string">"rsa_public_key.pem"</span>);</div><div class="line"></div><div class="line">   <span class="comment">// 生成签名公钥</span></div><div class="line">   <span class="keyword">byte</span>[] keyBytes = (<span class="keyword">new</span> BASE64Decoder()).decodeBuffer(key);</div><div class="line">   X509EncodedKeySpec keySpec = <span class="keyword">new</span> X509EncodedKeySpec(keyBytes);</div><div class="line">   KeyFactory keyFactory = KeyFactory.getInstance(<span class="string">"RSA"</span>);</div><div class="line">   PublicKey publicKey = keyFactory.generatePublic(keySpec);</div><div class="line"></div><div class="line"></div><div class="line">   claims = Jwts.parser()</div><div class="line">           .setSigningKey(publicKey)</div><div class="line">           .parseClaimsJws(jwt).getBody();</div><div class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">   e.printStackTrace();</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> claims;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>本篇博文代码地址：<a href="https://github.com/MTequila/demos/tree/master/jwt-rsa" target="_blank" rel="external">https://github.com/MTequila/demos/tree/master/jwt-rsa</a></p>
+
         
         </div>
         <footer class="article-footer">
@@ -333,282 +368,28 @@ ga('send', 'pageview');
         </footer>
     </div>
     
-</article>
-
-
-
-    <article id="post-spring-security-cas-logout-redirect" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
         
-        
-            <header class="article-header">
-                
+<nav id="article-nav">
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/08/spring-security-cas-logout-redirect/">Spring Security CAS Logout 重定向</a>
-        </h1>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/08/spring-security-cas-logout-redirect/">
-            <time datetime="2017-03-08T15:26:27.000Z" itemprop="datePublished">2017-03-08</time>
+        <a href="/2017/03/08/spring-security-cas-logout-redirect/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Spring Security CAS Logout 重定向</div>
         </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Spring-Boot/">Spring Boot</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/CAS/">CAS</a>, <a class="tag-link" href="/tags/Redirect/">Redirect</a>, <a class="tag-link" href="/tags/Spring/">Spring</a>, <a class="tag-link" href="/tags/Spring-Boot/">Spring Boot</a>, <a class="tag-link" href="/tags/Spring-Security/">Spring Security</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><strong>【原创文章，转载请注明出处】</strong></p>
-<blockquote>
-<p>承接上文<a href="/2017/02/18/spring-boot-security-cas-sso/">《基本Spring Boot 的 Spring Security CAS SSO 配置》</a>；在使用<code>CAS</code>时，用户退出系统后，Web界面一直停留在<code>CAS</code>的退出成功界面上，没有继续转向，添加了转向参数也没有起到作用，网上找了一些资料后得到解决，这里记录分享一下。</p>
-</blockquote>
-<p>首先修改<code>CAS</code>配置文件：<code>cas-server-webapp</code>项目下的<code>webapp/WEB-INFO/cas-servlet.xml</code>，把<code>cas.logout.followServiceRedirects</code>参数设置为<code>true</code>：</p>
-            <p class="article-more-link">
-                <a href="/2017/03/08/spring-security-cas-logout-redirect/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="/2017/03/08/spring-security-cas-logout-redirect/" data-id="cjb2ewc130004qqubftkvvzy5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
+</nav>
 
-        </footer>
-    </div>
+
     
 </article>
 
 
-
-    <article id="post-spring-boot-security-cas-sso" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/02/18/spring-boot-security-cas-sso/">基本Spring Boot 的 Spring Security CAS SSO 配置</a>
-        </h1>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/02/18/spring-boot-security-cas-sso/">
-            <time datetime="2017-02-18T04:21:42.000Z" itemprop="datePublished">2017-02-18</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Spring-Boot/">Spring Boot</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/CAS/">CAS</a>, <a class="tag-link" href="/tags/SSO/">SSO</a>, <a class="tag-link" href="/tags/Spring/">Spring</a>, <a class="tag-link" href="/tags/Spring-Boot/">Spring Boot</a>, <a class="tag-link" href="/tags/Spring-Security/">Spring Security</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><strong>【原创文章，转载请注明出处】</strong></p>
-<blockquote>
-<p>最近在整理公司的几个内部系统的认证和授权，这些子系统是用php开发的，单点登陆和权限管理都做了，但是架构和设计上有一些局限，导致本博用Java开发的新的子系统无法接入。随着公司技术方向往Java微服务架构转移，之前老的那一套php搞的认证与授权也决定推倒从来，用Java的这一套来搞。</p>
-</blockquote>
-<p>今天主要主要聊一下单点登陆系统的整合，单点登陆这种比较成熟的技术，有很多开源产品可以使用。而本博的原则也是能用开源产品就尽量不要自己重头写，原因很简单：</p>
-<ul>
-<li>开源产品在需求上考虑的比你要周全</li>
-<li>公司自己不需要去维护一套代码，可以减少成本</li>
-</ul></p>
-            <p class="article-more-link">
-                <a href="/2017/02/18/spring-boot-security-cas-sso/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="/2017/02/18/spring-boot-security-cas-sso/" data-id="cjb2ewc0y0002qqubk2vw4kat" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
     
-
-        </footer>
-    </div>
-    
-</article>
-
 
 </section>
             
